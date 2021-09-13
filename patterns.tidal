@@ -1,0 +1,31 @@
+-- d1 $ s "<bd*4 bd bd*2?> bd*4? bd <bd*2? bd*4>"
+
+d1 $ s "[~ bd*2] bd*4 ~ bd*8"
+
+d1 silence
+
+d2 $ ((1/8) ~>) $ s "hh27*16?"
+
+hush
+
+-- Melodies and Transformations
+
+d3 $ s "superpiano*4"
+
+d4 $ n "f a c e" # s "superpiano"
+
+-- c'maj d'mi e'min f'maj g'maj a'min b'dim
+
+d5 $ slow 2 
+   $ n "[<c'maj e'min> [d [a c]]? <[e f]*2 [a b]> <g f'maj e>]" 
+   # s "superpiano"
+   # sustain 4
+   # room 0.5
+   # gain 0.8
+   # lpf 2000
+
+hush
+
+
+
+

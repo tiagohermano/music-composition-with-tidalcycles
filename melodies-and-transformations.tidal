@@ -1,0 +1,8 @@
+d1 $ slow 2 
+   $ n (scale "major" $ sometimes (superimpose (+ "[2,4]")) 
+                        $ "[<0 2> [1 [5 0]]? <[2 3]*2 [5 6]> <4 3 2>]") 
+   # s "superpiano"
+   # sustain 4
+   # room 0.5
+   # gain 0.8
+   # lpf 2000
