@@ -1,0 +1,70 @@
+once $ s "breaks125"
+
+-- We can use 'begin' and 'end' to only play part of the sound, 
+-- in this case the final quarter of it:
+d1 $ s "breaks125" # begin 0.75 # end 1
+
+-- We can also use 'unit "c"' to change the behavior of speed so it
+-- changes the playback speed to match the cps
+d1 $ s "breaks125" # speed 1 # unit "c" # begin 0.75 # end 1
+
+-- This will fill the whole cycle with the sample
+d1 $ s "breaks125" # speed 1 # unit "c"
+
+-- Lets play four of those to fill the cycle
+d1 $ s "breaks125*4" # speed 1 # unit "c" # begin 0.75 # end 1
+
+-- Normally, I wouldn't use 'unit', 'begin' and 'end' by hand. Instead
+-- I'd use splice / slice or 'chop' to cut a sound into bits, and set
+-- the length of the loop in cycles with 'loopAt'
+d1 
+  $ loopAt 2 
+  $ chop 4 
+  $ s "breaks125"
+
+-- The above sounds pretty simple, but it is chopped into four parts.
+-- We can hear that by reversing each cycle
+d1 
+  $ rev
+  $ loopAt 2
+  $ chop 4 
+  $ s "breaks125"
+
+-- If we slow the pattern, we can hear each part separately
+d1 
+  $ slow 2
+  $ loopAt 2 
+  $ chop 4 
+  $ s "breaks125"
+
+-- Now what happerns if we sequence in two breaks?
+d1 
+  $ slow 2
+  $ loopAt 2 
+  $ chop 4 
+  $ s "breaks125 breaks157"
+
+-- With 'chop', it will play all the parts of break125, followed by
+-- all the parts of 'breaks157'
+
+-- If we swap 'chop' for its friend 'striate', then they are instead
+-- interlaced
+d1
+  $ slow 2
+  $ loopAt 2
+  $ striate 4
+  $ sound "breaks125 breaks157"
+
+-- If you use the *same* loop multiple times with striate, it kind
+-- of stretchs it
+d1 
+  $ slow 4
+  $ loopAt 1
+  $ striate 4
+  $ sound "breaks125*4"
+
+-- Here's what that normally sounds like
+once $ sound "breaks125"
+
+-- Try the 'bev' sample, you'll likely have to set loopAt quite high
+once $ s "bev"
