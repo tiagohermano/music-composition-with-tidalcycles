@@ -1,0 +1,21 @@
+-- Structure from the left
+"2 3" |+ "4 5 6"
+
+-- Result:
+--    |  2  |  3  |
+-- |+ | 4 | 5 | 6 |
+-- =  |  6  |  8  |
+
+-- Structure from the right
+"2 3" +| "4 5 6"
+
+-- Result:
+--    |  2  |  3  |
+-- |+ | 4 | 5 | 6 |
+-- =  | 6 |7|8| 9 |
+
+-- usage example: 
+d1 $ s "drum" # n "1 2 3" +| "3 4" -- taking the structure from the left
+
+d1 $ s "drum" # n "1 2 3" +| "3 4" -- taking the structure from the right
+

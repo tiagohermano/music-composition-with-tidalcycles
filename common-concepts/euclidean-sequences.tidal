@@ -1,0 +1,42 @@
+-- Euclidian rhythms are rhythms obtained using the greatest common divisor of two numbers.
+-- They were described in 2004 by Godfried Toussaint, a canadian computer scientist.
+-- Euclidian rhythms are really useful for computer/algorithmic music because they can 
+-- accurately describe a large number of rhythms used in the most important music world traditions.
+-- The algorithm work by providing two numbers:
+-- -> the number of beats
+-- -> the number of steps/silences to fill
+
+-- An euclidian rhythm will distribute the first number of beats to the second numbers of steps 
+-- to be filled. With Tidal, you can create euclidian rhythms by adding an event followed by 
+-- the (x,y) indicator, x and y corresponding to the numbers described above:
+d1 $ s "bass:3(7,16)"
+
+d1 $ s "[bd(3,8), cp(2,8), hh(7,8), bass:1(7,16)]"
+
+d1 $ s "[bd(5,8), cp(4,8), hh(7,8), bass:1(7,16)]"
+
+d1 $ s "[bd(5,8), cp(1,8)?, hh(7,8), bass:1(8,16)]"
+
+
+-- The Euclidean Algorithm Generates Traditional Musical Rhythms by Toussaint
+-- (2,5) : A thirteenth century Persian rhythm called Khafif-e-ramal.
+-- (3,4) : The archetypal pattern of the Cumbia from Colombia, as well as a Calypso rhythm from Trinidad.
+-- (3,5,2) : Another thirteenth century Persian rhythm by the name of Khafif-e-ramal, as well as a Rumanian folk-dance rhythm.
+-- (3,7) : A Ruchenitza rhythm used in a Bulgarian folk-dance.
+-- (3,8) : The Cuban tresillo pattern.
+-- (4,7) : Another Ruchenitza Bulgarian folk-dance rhythm.
+-- (4,9) : The Aksak rhythm of Turkey.
+-- (4,11) : The metric pattern used by Frank Zappa in his piece titled Outside Now.
+-- (5,6) : Yields the York-Samai pattern, a popular Arab rhythm.
+-- (5,7) : The Nawakhat pattern, another popular Arab rhythm.
+-- (5,8) : The Cuban cinquillo pattern.
+-- (5,9) : A popular Arab rhythm called Agsag-Samai.
+-- (5,11) : The metric pattern used by Moussorgsky in Pictures at an Exhibition.
+-- (5,12) : The Venda clapping pattern of a South African children’s song.
+-- (5,16) : The Bossa-Nova rhythm necklace of Brazil.
+-- (7,8) : A typical rhythm played on the Bendir (frame drum).
+-- (7,12) : A common West African bell pattern.
+-- (7,16,14) : A Samba rhythm necklace from Brazil.
+-- (9,16) : A rhythm necklace used in the Central African Republic.
+-- (11,24,14) : A rhythm necklace of the Aka Pygmies of Central Africa.
+-- (13,24,5) : Another rhythm necklace of the Aka Pygmies of the upper Sangha.

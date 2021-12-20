@@ -1,0 +1,10 @@
+-- Creating polymetric sequences is a fairly advanced thing you can 
+-- do using the Tidal mini-notation. To do so, enclose your pattern
+-- between curly brackets ({}):
+d1 $ s "{bd*2, hh*4, bd hh 808:4}%8"
+
+-- Alternatively, you can also add the precise subdivision you
+-- are looking for by using % followed by the subdivision number:
+d1 $ s "{bd hh 808:4}%8"
+
+d2 $ s "{bd cp 808:5}%4" # speed 2
