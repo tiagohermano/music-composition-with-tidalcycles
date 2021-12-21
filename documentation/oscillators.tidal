@@ -1,0 +1,49 @@
+-- Oscillators are continuously varying patterns.
+-- Unless otherwise stated, oscillators give minimum values of 0
+-- and maximum values of 1, and repeat once per cycle.
+
+-- Sine
+-- sine is a inusoïdal wave. Playing this example, you should hear
+-- the sound slowly moving from your left to your right speaker:
+d1 $ s "bd*8" # pan sine
+
+-- Cosine
+-- a cosine wave, is a sine shifted in time by as quarter
+-- of a cycle. It sounds similar to the sine above:
+d1 $ s "bd*8" # pan cosine # speed (sine + 0.5)
+
+-- Square
+-- A square wave, starting at 0, then going up to 1 halfway
+-- through a cycle:
+d1 $ sound "bd*8" # pan (cat [square, sine])
+
+-- Tri
+-- a triangle wave, starting at 0, then linearly rising to 1 halfway
+-- through a cycle, then down again:
+d1 $ sound "bd*16" # speed (slow 2 $ range 0.5 2 tri)
+
+-- Saw
+-- a sawtooth wave starting at 0, then linearly rising to 1 over one
+-- cycle, then jumping back to 0
+d1 $ sound "bd*8" # pan (slow 2 saw)
+
+-- Isaw
+-- An inverted sawtooth, starting at 1, then linearly falling to 0
+-- over one cycle, then jumping back to 1
+d1 $ s "bd*8" # pan (slow 2 isaw)
+
+-- Irand
+-- A function from an integer (giving the maximum) to a stream of (pseudo-)random integer numbers
+d1 $ s "drum*8" # n (irand 8)
+
+-- Scaling Oscillators
+-- By default, the oscillators will output values scaled between 0 and 1. 
+-- You might want to use bigger or smaller values. You might want, for instance,
+-- to modulate the frequency of a filter or select a random midi note between 0 and 127.
+-- To do so, you can use the range function:
+d1 $ s "bass:5*8" # lpf (range 200 5000 $ sine)
+
+-- Speeding up/down oscillators
+-- Oscillators are patterns! It means that you can speed them up or down 
+-- using the same function as usual (fast, slow, etc..):
+d1 $ s "bass:5*8" # lpf (slow 4 $ range 200 5000 $ sine) 
