@@ -1,0 +1,180 @@
+-- ==> PITCH <===
+-- octer (octer, octersub, octersubsub)
+-- octaver
+d1 $ s "superpiano*8" # n (irand 8) # octersubsub 1
+
+-- Frequency Shifter
+-- FreqShift implements single sideband amplitude modulation, also known as frequency shifting,
+-- but not to be confused with pitch shifting. Frequency shifting moves all the components of a
+-- signal by a fixed amount but does not preserve the original harmonic relationships.)
+d1 $ s "drum*8" # n (irand 8) # fshift (range 100 300 $ sine)
+
+d1 $ s "drum*8" # n (irand 8) # fshiftnote 100
+
+d1 $ s "drum*8" # n (irand 8) # fshiftphase (range 100 500 $ sine)
+
+-- Ring Modulation
+d1 $ s "drum*8" # n (irand 8) 
+  # ring 100  -- modulation amount (ring)
+  # ringf 100  -- modulation frequency (ringf)
+  # ringdf 100 -- slide in modulation frequency (ringdf)
+
+-- Tremolo
+d1 $ s "drum*8" # n (irand 8) 
+  # tremdp 8 -- depth
+  # tremr 10 -- speed
+
+-- ==> TIME & SPACE <==
+-- delay
+d1 $ s "drum*8" # n (irand 8) 
+  # delay 8 -- wet/dry
+  # delayt 2 -- delay time
+  # delayf 2 -- feedback amount
+
+-- leslie
+-- Emulation of a Leslie speaker: speakers rotating in a wooden amplified cabinet:
+d1 $ s "drum*8" # n (irand 8) 
+  # leslie 2 -- dry and wet amount
+  # lrate 5 -- modulation rate (6.7 for fast, 0.7 for slow)
+  # lsize 5 -- physical size of the cabinet in meters. Be careful, 
+            -- it might be slightly larger than your computer. 
+            -- Affects the Doppler amount (pitch warble)
+
+-- phaser
+d1 $ s "drum*8" # n (irand 8) 
+  # phaserrate (irand 100) -- speed
+  # phaserdepth (irand 30) -- depth
+
+-- spectral delay
+d1 $ s "drum*8" # n (irand 8) 
+  # xsdelay (irand 10) -- ???
+  # tsdelay (irand 20) -- ???
+
+-- magnitude freeze
+-- Freeze magnitudes at current levels when freze > 0 and advances phase according to 
+-- difference between frames to try and maintain current spectral quality:
+d1 $ s "drum*8" # n (irand 8) 
+  # freeze 3
+
+-- ==> ENVELOPPE <==
+-- ASR enveloppe
+d1 $ s "superpiano*4" # n (irand 4)
+  # att 2 -- attack (in seconds)
+  # rel 2 -- release (in seconds)
+  # legato 2 -- amount of overlap between two adjacent synth sounds. 
+             -- Values less than one (e.g. 0.5) will cut the sound off sooner.
+             -- Values greater than one (e.g. 1.5) will cut the sound off later
+
+
+-- ==> FILTERS <==
+-- DJ filter
+-- A fun classic DJ Filter. Low pass filter for the first half of the range, high pass for the rest:
+d1 $ s "superpiano*8" # n (irand 8)
+  # djf (sine)
+
+-- lowpass filter
+d1 $ s "supermandolin*8" # n (irand 8)
+  # lpf 1000 -- cutoff amount in hertz
+  # lpq 500 -- resonance
+
+-- highpass filter
+d1 $ s "supermandolin*8" # n (irand 8)
+  # hpf 1200 -- cutoff amount in hertz
+  # hpq 500 -- resonance
+  
+-- bandpass filter
+d1 $ s "supermandolin*8" # n (irand 8)
+  # bpf 1200 
+  # bandq 500
+
+-- vowel
+-- Formant filter to make things sound like vowels. 
+-- You can use a e i o u. Use a rest (~) to override the effect:
+d1 $ s "superpiano:2*4"
+  # vowel "a e i o"
+
+-- spectral comb filter
+-- Number of teeth and width of the comb are all controlled 
+-- using one floating point number:
+d1 $ s "drum*8" # n (irand 8) 
+  # comb 1 --  number of teeths and width of the comb filter
+
+-- spectral high pass filter
+d1 $ s "drum*8" # n (irand 8) 
+  # hbrick 0.3
+
+-- spectral low pass filter 
+d1 $ s "drum*8" # n (irand 8) 
+  # lbrick 0.3
+
+-- ==> DISTORTION <==
+-- distort
+d1 $ s "drum*8" # n (irand 8) 
+  # distort 4
+
+-- triode
+d1 $ s "drum*8" # n (irand 8) 
+  # triode 50
+
+-- shape (it might get loud)
+d1 $ s "superpiano*8" # n (irand 8) 
+  # shape 0.5
+
+-- squiz
+--  Reminiscent of some weird mixture of filter, ring-modulator
+-- and pitch-shifter. Try passing multiples of 2 to it - 2, 4, 8 etc.
+d1 $ s "drum*8" # n (irand 8) 
+  # squiz 2
+
+-- ==> BITS <==
+-- bin shifting
+-- Shift and scale the position of the bins.
+-- Can be used as a very crude frequency shifter/scaler:
+d1 $ s "drum*8" # n (irand 8)
+  # binshift 1
+
+-- bin scrambling
+-- Accepts floats to control the width and placement of
+-- the scrambling in the spectrum:
+d1 $ s "drum*8" # n (irand 8)
+  # scram 0.3
+
+-- crush
+-- a classic bitcrushing effect
+d1 $ s "superpiano*8" # n (irand 8)
+  # crush 2.5 -- 1 for a drastic reduction in bit-depth,
+              -- 16 for barely no reduction
+
+-- coarse
+-- fake audio resampling
+d1 $ s "superpiano*8" # n (irand 8)
+  # coarse 25 -- 1 for original, 2 for half, 3 for a third and so on
+
+-- waveloss
+-- Divides an audio stream into tiny segments, using the signal's
+-- zero-crossings as segment boundaries, and discards a fraction 
+-- of them. Takes a number between 1 and 100, denoted the percentage
+-- of segments to drop.
+d1 $ s "superpiano*8" # n (irand 8)
+  # waveloss 50
+
+-- krush
+d1 $ s "drum*8" # n (irand 8)
+  # krush 50
+  # kcutoff 3000
+
+-- magnitude smearing
+d1 $ s "superpiano*8" # n (irand 8)
+  # smear 8 -- accepts float
+
+-- spectral conformer
+d1 $ s "drum*8" # n (irand 8)
+  # real 1
+  
+-- spectral enhance
+d1 $ s "superpiano*8" # n (irand 8)
+  # enhance 5
+
+
+
+
