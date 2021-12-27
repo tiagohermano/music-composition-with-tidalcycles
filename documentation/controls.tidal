@@ -1,0 +1,22 @@
+-- Control functions are functions that are used to shape the sounds your patterns make (effects, parameters).
+
+-- Control synthesizers
+-- For instance, this pattern will alternate between multiple synths over the same melody:
+d1 $ note "c d e f g a"
+  # s "<superpiano supersquare supersaw>"
+
+-- Control effects
+-- Most of the time, you will use control patterns to use effects on your patterns.
+-- For instance, this drum pattern will be filtered:
+d1 $ s " bd hh bd hh*2"
+  # lpf "500 1000 1500"
+  # lpq 0.5
+
+
+-- Combine everything
+-- You can easily combine the last two examples to get a filtered melody playing
+-- every three instruments rotating for each note:
+d1 $ note "c d e f g a"
+   # sound "<superpiano supersquare supersaw>"
+   # lpf "500 1000 1500"
+   # lpq 0.5
