@@ -1,0 +1,68 @@
+-- Arpeggios from notes
+-- let's start with a sequence of notes
+d1 $ n "c a f e"
+  # s "supermandolin"
+
+-- now, let's play one note per cycle
+d1 $ n "<c a f e>"
+  # s "supermandolin"
+
+-- on top of that, put a copy of the sequence, offset in time and pitch
+d1 $ n (off 0.125 (|+ 7) "<c a f e>")
+  # s "supermandolin"
+
+-- add some structure to the original sequence
+d1 $ n (off 0.125 (|+7) "<c*2 a(3,8) f(3,8,2) e*2>")
+  # s "supermandolin"
+  # legato 2
+
+-- reverse in one speaker
+d1 $ jux rev $ n (off 0.125 (|+7) "<c*2 a(3,8) f(3,8,2) e*2>")
+  # s "supermandolin"
+  # legato 2
+
+-- let's add another layer
+d1 $ jux rev $ n (off 0.125 (|+7) $ off 0.125 (|+ 7) "<c*2 a(3,8) f(3,8,2) e*2>")
+  # s "supermandolin"
+  # legato 2
+
+-- ==> Arpeggios from chords <==
+-- we will start with a C major chord
+d1 $ n "c'maj"
+  # s "supermandolin"
+  # legato 2
+
+-- using the arp function to arpeggiate
+d1 $ arp "up" $ n "c'maj"
+  # s "supermandolin"
+  # sustain 0.5
+
+-- add another chord
+d1 $ arp "up" $ n "c'maj'4 e'min"
+  # s "supermandolin"
+  # sustain 0.5
+
+-- change the arpeggiator
+d1 $ arp "pinkyup" $ n "c'maj'4 e'min"
+  # s "supermandolin"
+  # sustain 0.5
+
+-- we can also pattern the arpeggiator
+d1 $ arp "<pinkyup down thumbup up>" $ n "c'maj'4 e'min"
+  # s "supermandolin"
+  # sustain 0.5
+
+-- change the chords, add some reverb
+d1 $ jux rev $ arp "<pinkyup down thumbup up>" 
+  $ n "<c'maj'4 e4'min'8 f4'maj'4>"
+  # s "supermandolin"
+  # sustain 2
+  # room 0.3
+  # sz 0.9
+
+-- Add some variety with 'chunk'
+d1 $ chunk 4 (|- note 5) $ jux rev 
+  $ arp "<pinkyup down thumbup up>" 
+  $ "<c'maj'4 e4'min'8 f4'maj'4>"
+  # s "supermandolin"
+  # sustain 0.2 # room 0.3 # sz 0.9
