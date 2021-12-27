@@ -1,0 +1,27 @@
+-- synthesizers
+
+-- ==> Additive synthesis <==
+-- supergong
+-- An example of additive synthesis, building up a gong-like
+-- noise from a sum of sine-wave harmonics.
+d1 $ n (slow 2 $ fmap (*7) $ run 8) 
+  # s "supergong" 
+  # voice "[0.5 0]/8" -- provides something like a tone knob
+  # decay "[1 0.2]/4" -- adjust how the harmonics decay
+  # accelerate 8 -- for the pitch glide
+
+-- ==> Subtractive synthesis <==
+-- supersquare
+-- A moog-inspired square-wave synth; variable-width pulses 
+-- with filter frequency modulated by an LFO
+d1 $ n (slow 2 $ fmap (*7) $ run 8) 
+  # s "supersquare" 
+  # decay "[1 0.2]/4" -- the decay
+  # voice "[0.5 0]/8" -- controls the pulse width (exactly zero or one will make no sound)
+  # semitone "1" -- how far in pitch the secondary oscillator is (integer)
+  # resonance "0.2" -- filter resonance
+  # lfo "1" -- how much the LFO affects the filter frequency
+  # rate "[1 0.5]" -- LFO rate
+  # pitch1 "1" -- filter frequency scaling multiplier, the frequency itself follows the pitch set by "n"
+
+
