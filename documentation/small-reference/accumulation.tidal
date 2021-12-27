@@ -1,0 +1,87 @@
+-- ==> SUPERPOSITION <==
+-- OVERLAY
+-- Type: overlay :: Pattern a -> Pattern a -> Pattern a
+-- the overlay function is similar to cat, but combines
+-- two patterns, rather than a list of patterns.
+d1 $ s (overlay "bd sn:2" "cp*3")
+
+--is the same as
+d1 $ s "[bd sn:2, cp*3]"
+
+-- <>
+-- Type: (<>) :: Pattern a -> Pattern a -> Pattern a
+-- <> is the same as overlay described above but in operator
+-- form. For example
+d1 $ s ("bd sn:2" <> "cp*3")
+
+-- STACK
+-- Type: stack :: [Pattern a] -> Pattern a
+-- stack takes a list of patterns and combines them into a
+-- new pattern by layering them up - effectively playing all
+-- of the patterns in the list simultaneously
+d1 $ stack [
+  s "bd bd*2",
+  s "hh*2 [sn cp] cp future*4",
+  s "arpy" +| n "0 .. 15"
+]
+
+-- This is particularly useful if you wan to apply a
+-- function or synth control pattern to multiple
+-- patterns at once
+d1 $ whenmod 5 3 (striate 3) $ stack [
+  s "bd bd*2",
+  s "hh*2 [sn cp] cp future*4",
+  s "arpy" +| n "0 .. 15"
+] # speed "[[1 0.8], [1.5 2]*2]/3"
+
+-- SUPERIMPOSE
+-- Type: superimpose :: (Pattern a -> Pattern a) -> Pattern a -> Pattern a
+-- 'superimpose' plays a modified version of a pattern 'on top of' the original
+-- pattern, resulting in the modified and original version of the patterns being
+-- played at the same time. For example:
+d1 $ superimpose (fast 2) $ s "bd sn [cp ht] hh"
+
+-- is the same as
+d1 $ stack [
+  s "bd sn [cp ht] hh",
+  fast 2 $ s "bd sn [cp ht] hh"
+]
+
+-- LAYER
+-- Type: [a -> Pattern b] -> a -> Pattern b
+-- the 'layer' function allow you to layer up multiple function on one
+-- pattern.
+d1 $ layer [rev, fast 2] $ sound "arpy [~ arpy:4]"
+
+-- if you want to include the original version of the pattern
+-- in the layering, use the id function
+d1 $ layer [id, rev, fast 2] $ s "arpy [~ arpy:4]"
+
+-- STEPS
+-- Type: steps :: [(String,String)] -> Pattern String
+-- 'steps' is like 'step' but it takes a list of pairs like
+-- 'step' would and it plays them all simultaneously
+d1 $ s (steps [("cp", "x  x x  x x x  x"), ("bd", "xxxx")])
+
+-- ITER
+-- iter divides a pattern into a given number os subdivisions,
+-- plays the subdivisions in order, but increments the starting
+-- subdivisions each cycle. The pattern wraps to the first subdivision
+-- after the last subdivision is played.
+d1 $ iter 4 $ s "bd hh sn cp"
+
+-- this will produce the following 4 cycles
+-- bd hh sn cp
+-- hh sn cp bd
+-- sn cp bd hh
+-- cp bd hh sn
+
+-- iter'
+-- iter' does the same as iter but in the other direction
+d1 $ iter' 4 $ sound "bd hh sn cp"
+
+-- produce this pattern
+-- bd hh sn cp
+-- cp bd hh sn
+-- sn cp bd hh
+-- hh sn cp bd
