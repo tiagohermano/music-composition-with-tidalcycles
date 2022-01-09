@@ -1,0 +1,197 @@
+-- ==> Audio Sampling <==
+-- chop
+-- 'chop' cuts each sample into the given number of parts, allowing you to explore
+-- a techinique known as 'granular synthesis'. It turns a pattern of samples into a
+-- pattern of parts of samples. For example:
+d1 
+  $ chop 16 
+  $ s "arpy ~ feel*2 newnotes"
+
+-- In the above, each sample is chopped into 16 bits, resulting in 64 (16*4) events.
+-- You can pattern that first parameter:
+d1 
+  $ chop "<16 128 32>" 
+  $ s "arpy ~ feel*2 newnotes"
+
+-- You end up with a pattern of the chopped up bits of sample. You'll already be able
+-- to hear this more clearly if you for example reverse the pattern, as you'll reverse
+-- the order of the sample parts:
+d1
+  $ slow 2
+  $ rev
+  $ chop 16
+  $ s "breaks125"
+
+-- Let's try that rever in just one speaker:
+d1
+  $ slow 2
+  $ jux rev
+  $ chop 16
+  $ s "breaks125"
+
+-- Different values of 'chop' can yield very different results,
+-- depending on the samples used:
+d1
+  $ chop 16
+  $ s (samples "arpy*8" (run 16))
+
+d1 
+  $ chop 32 
+  $ s (samples "arpy*8" (run 16))
+
+d1
+  $ chop 256
+  $ s "bd*4 [sn cp] [hh future]*2 [cp feel]"
+
+-- You can also use 'chop' (or 'striate') with very long samples, to cut it into
+-- short chunks and pattern those chunks. The following cuts a sample into 32 parts,
+-- and plays it over 8 cycles:
+d1
+  $ loopAt 8
+  $ chop 32
+  $ sound "bev"
+
+-- The 'loopAt' takes care of changing the speed of sample playback so that the sample
+-- fits in the given number of cycles perfectly. As a result, in the above the granules
+-- lines up perfectly, so you can't really hear that the sample has been cut into bits.
+-- Again, this becomes more apparent when you do further manipulations of the pattern,
+-- for example 'rev' to reverse the order of the cut up bits:
+d1
+  $ loopAt 8
+  $ rev
+  $ chop 32
+  $ s "bev"
+
+-- striate
+-- 'striate' is a kind of granulator, cutting samples into bits in a similar to 'chop',
+-- but the resulting bits are organised differently. For example:
+d1
+  $ slow 4
+  $ striate 3
+  $ s "numbers:0 numbers:1 numbers:2 numbers:3"
+
+-- This plays the loop the given number of times, but triggering progressive portions
+-- of each sample. So in this case it plays the loop three times, the first time playing
+-- the first third of each sample, then the second time playing the second third of each sample,
+-- and then finally the last third of each sample. Compare this with 'chop:'
+
+d1
+  $ slow 4
+  $ chop 3
+  $ s "numbers:0 numbers:1 numbers:2 numbers:3"
+-- You can hear that the striate version 'interlaces' the cut up bits of samples together,
+-- whereas the chop version plays the bits from each chopped up sample in turn. It might be
+-- worth listening to the samples without granulation, in case that helps understand what's
+-- happening in the above:
+
+d1
+  $ slow 4
+  $ s "numbers:0 numbers:1 numbers:2 numbers:3"
+
+-- striateBy
+-- 'striateBy' is a variant of 'striate', with an extra parameter, which specifies the length
+-- of each part. 'striate' still scans across the sample over a single cycle, but if each bit
+-- is longer, it creates a sort of stuttering effect. For example the following will cut the bev
+-- sample into 32 parts, but each will be 1/16th of a sample long:
+d1 
+  $ slow 32
+  $ striateBy 32 (1/16)
+  $ s "bev"
+-- Note that striate uses the 'being' and 'end' parameters internally. This means that if you're
+-- using 'striate' of 'striateBy' you probably shouldn't also specify begin or end.
+
+-- slice
+-- 'slice' is similar to 'chop' and 'striate', in that it's used to slice samples up into bits.
+-- The difference is that is allows you to rearrange those bits as a pattern.
+d1
+  $ slice 8 "7 6 5 4 3 2 1 0"
+  $ s "breaks165"
+  # legato 1
+
+-- The above slices the sample into eight bits, and the plays them backwards, equivalent of
+-- applying 'rev $ chop 8'. Here's a more complex example:
+d1
+  $ slice 8 "[<0*8 0*2> 3*4 2 4] [4 .. 7]"
+  $ s "breaks165"
+  # legato 1
+
+-- splice
+-- splice is similar to slice, but the slices are automatically pitched up or down to fit
+-- their 'slot'.
+d1
+  $ splice 8 "[<0*8 0*2> 3*4 2 4] [4 .. 7]"
+  $ s "breaks165"
+
+-- randslice
+-- 'randslice' chops the sample into the given number of pieces and then plays back a
+-- random one each cycle:
+d1 $ randslice 32 $ sound "bev"
+
+-- use 'fast' to get more than on per cycle
+d1 $ fast 4 $ randslice 32 $ s "bev"
+
+-- chew
+-- 'chew' works the same as bite, but speeds up/slows down playback of sounds as well as
+-- squeezing / contracting the slices of pattern.
+-- Compare these:
+d1 $ bite 4 "0 1*2 2*2 [~ 3]" $ n "0 .. 7" # s "drum"
+
+d1 $ chew 4 "0 1*2 2*2 [~ 3]" $ n "0 .. 7" # s "drum"
+
+-- loopAt
+-- 'loopAt' makes samples fit the given number of cycles. internally, it works by setting the unit
+-- control to "c". changing the playback speed of the sample with the speed parameter, and setting
+-- the density of the pattern to match.
+d1 $ loopAt 4 $ s "breaks125"
+
+-- It's a good idea to use this in conjunction with 'chop', so the break is chopped into pieces
+-- and you don't have to wait for the whole sample to start/stop.
+d1 $ loopAt 4 $ chop 32 $ s "breaks125"
+
+-- Like all Tidal functions, you can mess about with this considerably. The below example shows
+-- how you can supply a pattern of cycle counts to 'loopAt':
+d1
+  $ juxBy 0.6 (|* speed "2") 
+  $ loopAt "<4 6 2 3>" 
+  $ chop 12 
+  $ s "fm:8"
+
+d1 $ s "fm:9"
+
+-- smash
+-- 'smash' is a combination of 'spread' and 'striate' - it cuts the samples into the given
+-- number of bits, and then cuts between playing the loop at different speeds according to
+-- the values in the list. So this:
+d1 $ smash 3 [2,3,4] $ s "ho ho:2 ho:3 hc"
+
+-- is a bit like this:
+d1 $ slow "<2 3 4>" $ striate 3 $ s "ho ho:2 ho:3 hc"
+
+--smash'
+-- 'smash'' is 'smash' but based on 'chop' instead of 'striate'.
+-- Compare:
+d1 $ smash 6 [2,3,4] $ s "ho ho:2 ho:3 hc"
+
+-- to
+d1 $ smash' 6 [2,3,4] $ s "ho ho:2 ho:3 hc"
+
+-- or
+d1 $ smash 12 [2,3,4] $ s "bev*4"
+
+-- vs
+d1 $ smash' 12 [2,3,4] $ s "bev*4"
+-- for a dramatic difference
+
+-- ==> Signal Sampling <== 
+-- segment
+-- 'segment' 'samples' the pattern at a rate of 'n' events per cycle. Useful for turning
+-- a continous pattern into a discrete one. In this example, the pattern originates from
+-- the shape of a sine wave, a continous patter. Without segment the samples will get
+-- triggered at an undefined frequency which may be very high.
+d1 $ n (slow 2 $ segment 16 $ range 0 32 $ sine) # s "amencutup"
+
+-- sig
+-- 'sig' takes a function of time and turns it into a pattern. It's very useful for creating
+-- continous patterns such as 'sine' or 'perlin'. For example, 'saw' is defined as
+saw = sig $ \t -> mod' (fromRational t) 1
+
