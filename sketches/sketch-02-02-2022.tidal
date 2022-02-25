@@ -1,0 +1,25 @@
+d1 
+  $ stack [
+    slow 4 $ n (run 16) # s "bleep"
+  ]
+
+d1
+  $ loopAt 1
+  $ slice 8 "0 2 [<2 2> <1 2>] <3 4> 4 7"
+  $ s "breaks125:1"
+  # leslie 0.5
+
+d2
+  $ struct "1(2,3)" 
+  $ s "crow"
+  # gain 0
+  -- # room 0.3
+
+d1 $ silence
+
+d2
+  $ off 0.225 (|+|12)
+  $ slow 2
+  $ n (arpg $ scale "saba" "f'minor6 e'minor7 c'minor11") # s "superreese"
+
+scaleList
