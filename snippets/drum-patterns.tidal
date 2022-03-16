@@ -1,0 +1,1 @@
+d1 $ sound "[hh*16, kick:8 snare:4 [~ kick:8] snare]" # gain "[1 1.2]*8"
