@@ -23,6 +23,7 @@
 - prochort
 - space
 - tech
+- bleep
 
 ## drums samples
 - gretsch
@@ -66,6 +67,11 @@
 - tablex
 - toys
 - xmas
+
+## animals noises
+- crow
+- baa
+- birds
 
 ## synths
 - hoover
