@@ -1,0 +1,34 @@
+setcps (140/60/4)
+
+-- drums
+d1 
+  $ stack [
+    s "kick:4(4,8)",
+    s "cp(2,8)",
+    every 8 (#gain 0) $ s "ho(3,8,1)" 
+      # gain 1
+  ] # cps (140/60/4)
+
+-- bass
+d2 
+  $ jux rev
+  $ n "1(3,8)"
+  # s "bass1:2"
+  # gain 1.4
+  # djf 0.4
+
+-- voice decoration
+d3 
+  $ s "rave:3/3"
+
+-- melody
+d4
+  $ slow 2
+  $ every 6 rev
+  $ slice 4 "0 2 2 <8/3 3/2>"
+  $ n "7 4"
+  # s "toys" 
+  # legato 1
+  # djf 0.4
+  # squiz 4
+  # gain 1.3
