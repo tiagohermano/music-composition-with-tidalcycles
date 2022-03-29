@@ -1,0 +1,7 @@
+-- core house drum pattern
+d1 
+  $ stack [
+    s "hc:3(4,8,1)",
+    s "kick:4(4,8)", -- the Four-on-the-Floor kick drum pattern
+    s "cp:2(2,8)"
+  ] # cps (120/60/4)
