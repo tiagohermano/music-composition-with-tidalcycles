@@ -1,0 +1,6 @@
+d1
+  $ stack [
+    slow 2 $ jux rev $ superimpose (off 0.125 (+| 12)) $ iter 4 $ s "kick(8,16)" # n "5",
+    superimpose (fast 2) $ s "808bd(8,16)" # n (irand 3) # gain 1.2 # pan sine,
+    iter 4 $ s "808oh(10,16)" # n (irand 2) # gain 0.9
+  ]
