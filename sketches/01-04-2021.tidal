@@ -1,0 +1,32 @@
+d1
+  $ superimpose (slow 2)
+  $ superimpose (rev)
+  $ iter 2
+  $ stack [
+    s "bd sn(2,4) kick(1,2)" # n (irand 3),
+    s "808bd(4,8)" # n (range 0 2 saw) # att 2 # rel 2
+  ]
+  
+d2
+  $ jux rev
+  $ superimpose (slow 2)
+  $ n (scale "harmonicMajor" (arpg "d'min e'maj")) 
+  # s "superpiano"
+
+d3
+  $ slow 2
+  $ superimpose (slow 1.5)
+  $ superimpose (#djf 0.8)
+  $ n (scale "saba" $ arpg "c'maj <a'min e'maj> <g'maj e'min>") 
+  # s "superpiano"
+  
+
+---
+
+d1
+  $ s "808bd(1,8)" # rel 2
+
+d2
+  -- $ n "b'minflat f'min d'majflat a'majflat"
+  $ n "a'min"
+  # s "superpiano"
