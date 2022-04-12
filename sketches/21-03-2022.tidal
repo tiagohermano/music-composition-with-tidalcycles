@@ -1,0 +1,19 @@
+d1 
+  $ s "bottle(7,8,<0 3 2 1>)" 
+  # speed 0.25 
+  # gain (range 0.2 0.6 rand)
+  # gain 1.2
+
+d2
+  $ gap "<16 32>"
+  $ s "moog"
+
+d3 
+  $ iter 4
+  -- $ degradeBy "0.2"
+  $ n (run 8) 
+  # s "[808mt, 808mc, 808oh?0.2]"
+
+d4
+  $ n "{0 2 3 7 1}%4"
+  # s "glitch"

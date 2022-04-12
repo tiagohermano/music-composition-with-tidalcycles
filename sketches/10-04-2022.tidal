@@ -1,0 +1,12 @@
+d1
+  $ loopAt 1
+  $ s "break:4"
+  # legato 1
+  # djf 0.4
+
+d3
+  $ s "super808(6,8)"
+  # n "1"
+  # gain 1.0
+
+

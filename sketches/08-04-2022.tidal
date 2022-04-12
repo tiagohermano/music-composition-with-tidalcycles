@@ -1,0 +1,8 @@
+d1 
+  $ every 2 (fast 2) 
+  $ stack [
+    s "{bd(4,4) sn(2,4)}",
+    s "hh27*8",
+  ]
+
+

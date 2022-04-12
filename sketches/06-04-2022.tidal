@@ -1,0 +1,3 @@
+d1 
+  $ sometimesBy 0.1 (ply 2)
+  $ s "{808mc*5, 808ht*3}"

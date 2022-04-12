@@ -1,0 +1,5 @@
+d1 $ loopAt 2 $ "break:2" 
+
+d2 $ s "sn(2,8)"
+
+d3 $ s "bass3:2*4"

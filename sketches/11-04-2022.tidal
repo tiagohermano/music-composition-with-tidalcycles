@@ -1,0 +1,56 @@
+d1 
+  $ every 5 (# n "<3 2>")
+  $ jux rev
+  $ gap "16" 
+  $ s "moog"
+  # waveloss 10
+  # lpf "<500 800>"
+
+d2
+  $ iter 2
+  $ s "super808(3,8)"
+  # n (run 4)
+  # delay 0.8
+  # gain 1.2
+  -- # lpf "500"
+
+d3
+  $ 
+
+---
+
+d1 $ s "bd*4"
+
+d2 $ ((1/8) ~>) $ s "hh27*8"
+
+---
+
+-- drums
+d1
+  $ stack [
+    every 8 (#gain 0) $ s "[kick(4,8), 808bd(3,8)]" # n "<2 4>" # lpf "800" # delay 500,
+    ((1/8) ~>) $ s "hh27(8,16)" # n (run 3) # room 0.3,
+    iter 4 $ s "[808cy(<3 2>,4), 808hc(8,16)]" # n (run 3)
+  ]
+
+-- bass/drum
+d2
+  $ slow 2
+  $ iter 2
+  $ s "[808bd*2 808mt*2, 808oh*4](<4 6>,8)" # n (run 2)
+  
+
+-- melody
+d3 
+  $ every 8 (#gain 0)
+  $ gap 16 $ s "superfm(8,16)" # n (arpg "c'maj d'min") # gain 0.8
+
+-- voice
+d4 
+  $ sometimesBy 0.5 (#gain 1)
+  $ s "<fm <crow*4 monsterb*2>>" 
+  # n "[0|1|2|3]" 
+  # legato 1
+  # gain 0
+
+

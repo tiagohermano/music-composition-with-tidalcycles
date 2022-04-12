@@ -1,0 +1,19 @@
+d1
+  $ fast 2
+  $ stack [
+    s "hc [hc  ho]" # legato 1,
+    s "reverbkick(2,4)",
+    s "sn:1(3,4)",
+    s "less:2(1,3)"
+  ]
+  # djf (range 0.2 1.2 saw)
+
+d2 
+  $ s "tech"
+
+d2
+  $ fast 2
+  $ s "{reverbkick(<3 4>,8), sn(<2 3>,<4 5>), [hc [ho !]*2]/2}" 
+  # djf "<0.2 0.4>"
+  # gain 1.2
+

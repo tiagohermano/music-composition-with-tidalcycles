@@ -1,0 +1,6 @@
+d1 
+  $ stack [
+    s "hc(4,8,1)",
+    struct "t(4,8)" $ s "kick:3",
+    struct "t(2,8)" $ s "cp"
+  ]
