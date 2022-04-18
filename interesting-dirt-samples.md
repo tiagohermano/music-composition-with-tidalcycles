@@ -11,6 +11,7 @@
 ### noises
 - mp3
 - off
+- battles
 
 ## chiptune music
 - glitch
@@ -26,6 +27,11 @@
 - bleep
 
 ## drums samples
+- can (bateria brega)
+- clubkick
+- claus
+- ab
+- ades2
 - gretsch
 - hardcore
 - hardkick
@@ -46,8 +52,21 @@
 - sequential
 - sn
 - tabla
+- dr
+- dr2
+- dr55
+- dr_few
+- east
+- electro
+- haw
+
+## guitars
+- bsguitar
+- gtr (a lot of echo)
 
 ## drums patterns
+- auto
+- amencutup
 - breaks125
 - breaks152
 - breaks157
@@ -55,8 +74,10 @@
 
 ## voice-like samples
 - h
+- bsvocals
 - hmm
 - kurt
+- blue
 - monsterb
 - numbers
 - rave
@@ -67,6 +88,13 @@
 - tablex
 - toys
 - xmas
+- fm
+- diphone
+- diphone2
+- dorkbot
+- erk
+- feel
+- feelfx
 
 ## animals noises
 - crow
@@ -74,24 +102,42 @@
 - birds
 
 ## synths
+- dsynth
+- cpu
 - hoover
 - if
 - juno
 - jvbass
 - rave2
 - sf
+
 ### pianos
 - latibro
+
 ### bass
+- bass0
+- bass1
+- bass2
+- bass3
 - jungbass
 - wobble
+- pluck
+- dbass
+- stomp
+- techno
+- world
 
 ## wind instrument
 - mute
 - sax
 - trump
 
-## bass
-- pluck
-
 ## other
+- fire (fire sounds)
+- foley (random foley sounds)
+
+## music long snippets
+- dl
+- led
+
+panic
