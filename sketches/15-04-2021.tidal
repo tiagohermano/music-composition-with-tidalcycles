@@ -1,0 +1,15 @@
+d1 $ s "[bd(8,16), sn(4,8), hh27(16, 32, 2)]" # n (run 3) # room 0.6 # lpf "2000" # pan sine
+
+d1 
+  $ fast 2 
+  $ s "supermandolin*3" # n ( arpg "c'maj d'min" ) 
+  # sustain 2
+
+d2
+  $ loopAt 1.8
+  $ s "break:3" 
+
+d3 
+  $ slow 2 
+  $ s "invaders(8,16)" # n (run 6)
+

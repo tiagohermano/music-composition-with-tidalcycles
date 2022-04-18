@@ -1,0 +1,13 @@
+d1
+  $ stack [
+    every 5 (#gain 0) $ s "<hh hh27>(16,32)" # n (run 2) # gain 1.3,
+    s "<bd 808sd>(10,16)",
+    s "<sn [realclaps|peri]>(4,16)" # n "0 <4 2>",
+    s "[crow|kurt|monsterb](<1 2>,6)?0.3" # n (run 2) # legato 1,
+    gap 8 $ s "less(4,8)" # n (run 4) # gain 1.4,
+    s "tech(3,8)" # n "0 <1 2>" # gain 1.2 # lpf "800",
+    every 3 (rev) $ s "hoover(3,8)" # legato 1 # gain 1.1,
+    jux rev $ s "juno(8,12)" # n (run 4) # gain 1.1 # legato 1
+  ] # room 0.3 # djf 0.5 # vowel "<[a u] [i o]>"
+
+  

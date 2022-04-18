@@ -38,7 +38,6 @@ d2
   $ slow 2
   $ iter 2
   $ s "[808bd*2 808mt*2, 808oh*4](<4 6>,8)" # n (run 2)
-  
 
 -- melody
 d3 
