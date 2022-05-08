@@ -1,0 +1,14 @@
+d1 
+  $ slow 2
+  $ off 0.125 (|+ n 12)
+  $ (|+ n 12)
+  $ n (arpg "c'min e'min <f'min a'maj>") 
+  # s "superpiano"
+  # legato 2
+
+d1 $ silence
+
+d2
+  $ jux (|+ n 12)
+  $ every 2 (fast 2)
+  $ s "house*4"

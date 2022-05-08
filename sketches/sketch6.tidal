@@ -1,0 +1,15 @@
+d1
+  $ struct "1(3,8)"
+  $ s "gab:2" 
+  + up "<3 7>/2"
+  # cps (100/100)
+  # coarse (range 1 10 (sine))
+  # room (range 0.5 10 (sine))
+  # pan sine
+
+d2
+  $ slow (range 1 2 (sine))
+  $ stack [
+    s "[bd sn](4,4)",
+    s "[cp hh*2](2,4)" # gain 1.2,
+  ]

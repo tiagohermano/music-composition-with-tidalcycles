@@ -1,0 +1,53 @@
+breaks165cps = 0.695
+
+setcps (0.695)
+
+-- striate: slice beats 
+d1 $ every 2 (0.25 <~) $ striate 128 ( s "breaks165" ) 
+
+d1 $ striate 128 ( s "breaks165" )
+
+d1 $ striate 128 ( s "breaks165" )
+  |+| speed "[0.2 1 0.4 1]/4"
+
+d1 $ every 2 (0.125 <~) $ every 3 (0.25 <~) $ every 4 rev 
+   $ striate 128 ( s "breaks165" )
+   |+| speed "[0.2 1 0.4 1 1 1.2]/5"
+
+d1 $ s "[cp cp?]*3 [bd*2]" # voice 1 # vowel "<a e> <i e> <o u>"
+
+d2 $ slow 1.8 $ s "[hh:3 hh:3?]*4" # amp 1.2
+
+d3 $ s "sax" # legato 3
+
+-- Testing Samples
+d1 $ n "[cp*2] crow? bd bd" # s "bass0" 
+
+d1 $ s "[cp*2 bd] [crow crow?] [drum:0 drum:2 drum:0?]"
+
+d2 $ s "[hh:3*2]*3" # amp 1.2
+
+d3 $ n "5 [2 3?] 4" #  s "feelfx"
+
+d4 $ striate 8 (s "foo")
+
+d1 $ s "[space:4 tech:2] [tech:2 hit?:1]"
+
+d2 $ n "[2 2] [4 2 2?] [3 2 4] [1? 2 4]" # s "gabba" # speed "2 0.4 0.8"
+
+d2 silence
+
+d3 $ n "[5 3 5] [2 2? 5] [3 2 3 3]" # s "sequential" # room 0.5
+
+d3 $ n "[5 3 5] [2 2? 5] [3 2 3 3]" # s "kurt" # room 0.5
+
+d2 $ s "hh:2 ~ hh:3 cp"
+
+d1 $ s "gretsch*8" 
+  # n (irand 8) 
+  # legato 1.2 
+  # coarse "1.2 0.8 0.4 1.4"
+
+d1 $ s "sax" # cut 1
+
+p "cpsfun" $ s "bd sd(3,8)" # cps (slow 8 $ 0.5 + saw)

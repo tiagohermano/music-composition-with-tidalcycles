@@ -1,0 +1,26 @@
+d1
+  $ n "c4 <d3 f3>" # s "supersaw"
+  # legato 1
+  # cps(60/120)
+
+d1
+  $ arp "up"
+  $ n (off 0.125 (|+12) "<c e> <a c> <f a> <e f>") 
+  # s "superpiano"
+  # legato 1.5
+
+d1
+  $ struct "1(3,8)"
+  $ s "gab:2" 
+  + up "<3 7>/2"
+  # cps (120/100)
+  # coarse (range 1 10 (sine))
+  # room "0.7"
+
+d2
+  $ slow 2
+  $ stack [
+    s "[bd sn](4,4)",
+    s "[cp hh*2](2,4)" # gain 1.2,
+  ]
+  

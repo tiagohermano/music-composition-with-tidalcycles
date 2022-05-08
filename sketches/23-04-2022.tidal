@@ -1,0 +1,12 @@
+d1 
+  $ loopAt 4
+  $ s "lfbreak:3"
+  # room 0.2
+
+d2
+  $ loopAt 4
+  $ s "lfhhbreak:7"
+
+d2
+  $ loopAt 4
+  $ s "lfloop:1"

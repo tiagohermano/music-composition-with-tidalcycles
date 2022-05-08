@@ -1,0 +1,22 @@
+d1
+  $ off (range 0 1 (slow 100 sine)) (+ up 12)
+  $ slow 2
+  $ (#gain (range 0.80 1.1 (slow 2 sine)))
+  $ note "b5" # s "superpiano"
+  + up "[-7 -5 0 2 3 -5 -7 2 0 -5 3 2]"
+  # cps (144/120)
+  # coarse (range 1 10 (slow 2 saw))
+
+d2
+  $ slow 2
+  $ struct "1(7,12)"
+  $ note "b3" # s "supertron"
+  + up "<0 3>/2"
+  # pan sine
+  # coarse (range 3 10 (slow 10 sine))
+
+d3
+  $ slow 2
+  $ struct "1(3,10)"
+  $ note "c7" # s "superhex"
+  # cps (150)

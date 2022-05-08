@@ -1,0 +1,135 @@
+d1 
+  $ (stut 4 0.9 (1/8)) 
+  $ s "bd*4"
+
+d2
+  $ off 0.125 (rev)
+  $ n (scale "minPent" (arpg "c a f e"))
+  # s "superhammond"
+
+scaleList
+
+d1
+  $ superimpose (jux rev)
+  $ s "superfm"
+  # n (range 1 6 (sine))
+
+d1
+  $ slice 8 "0 [2 2] 3 3 [4 3] <2 2> 4 7"
+  -- $ loopAt 1
+  $ s "breaks125"
+
+d1
+  $ n "[1|2|3]" # s "superpiano"
+
+d1
+  $ n "<1 2 3>" # s "superpiano"
+
+d1 $ s "moog"
+
+d1 
+  $ n "<0 1 2>"
+  # s "ratinho"
+  # attack 0.7
+
+d1
+  $ slow 4
+  $ n (scale "major" $ arpg "c'maj")
+  # s "super808"
+  # crush (range 8 5 (slow 2 $ sine))
+  # legato 2
+
+d2
+  $ fast 1.5
+  $ struct "10101" $ s "drums" # gain 1.6
+
+d3
+  $ struct "1001001" $ n (irand 8) # s "crow" # gain 1.5
+  # legato 2
+
+
+d1 
+  $ slow 1.5
+  $ off 0.125 (+12)
+  $ struct "11010101" 
+  $ n (irand 4)
+  # s "hardkick"
+  # legato "<1 2>/2"
+  # room 0.5
+
+d2
+  $ n "c'min e'min"
+
+  
+
+d1 
+  $ s "cp(2,8)" 
+  # room (range 0.1 0.5 (sine))
+  # cps (150/120)
+
+d1
+  $ randslice 8
+  $ s "breaks125*8"
+  # cps (70/120)
+
+  
+
+d2 
+  $ s "gab*4"
+  # n (irand 8)
+  # gain 0.8
+  # cps (120/120)
+
+d1
+  -- $ slow 6
+  $ jux rev
+  $ off 0.125 (|+| 12)
+  $ n (arpg "<d'maj e'maj> <a'maj d'maj> f'maj e'maj")
+  # s "soskick"
+  # cps (40/120)
+  # pitch1 50 
+
+
+d2
+  $ s "less(4,9)"
+  # n (irand 8)
+  # gain 1.5
+
+d3 
+  $ n "<0 2 3>? <2 1 0>?" 
+  # s "<monsterb kurt tablex>*2"
+  # legato 1
+  # 1.8
+
+
+d1
+  -- $ s "hardcore(7,12)"
+  -- $ off 0.125 (rev)
+  $ stack [
+    s "house(7,12)" # n (range 0 6 (saw)),
+    s "bass:3(7,8)" # n (range 0 4 (saw))
+  ]
+
+d2
+  $ s "bass:4(7,16)"
+  -- # n (range 0 4 (saw))
+  # gain 0.8
+
+d2 $ silence
+
+d1
+  $ struct "1(3,8)" 
+  $ n (range 2 4 (saw)) 
+  # s "popkick"
+
+d2
+  $ s "hh27*8"
+  # gain 1.1
+
+d3
+  $ s "pluck*4"
+  # n (range 0 4 (saw))
+  # gain 0.8
+
+
+

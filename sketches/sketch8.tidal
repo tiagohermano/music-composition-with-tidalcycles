@@ -1,0 +1,33 @@
+setcps(150/120)
+
+d1 
+  $ n "1 2 3 4" 
+  # s "hh*4"
+  # cps(100/120)
+
+d1
+  $ slow 1.5
+  $ jux rev
+  $ n (arpg "c'maj d'maj <f'min e'min>") # "soskick"
+  -- $ n (arpg (irand 8)) # "soskick*8"
+  # room (range 0.5 1.5 $ sine)
+  # sustain 2 
+  -- # gain 0.8
+
+d2
+  $ slow 1.5
+  $ s "mt*8" # n (irand 8)
+  # sustain 2
+
+d1
+  $ slow 4.5
+  -- $ slice 4 "0 2 4 3 2 1"
+  $ struct "101010" $ s "tablex:2"
+  # gain 1
+
+d2
+  $ slow 2
+  $ slice 8 "0 2 [3 3] 4 3 <7 2 3> <6 3>*2 <5 2 1>*2"
+  $ s "bev"
+
+    

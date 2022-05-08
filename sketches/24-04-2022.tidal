@@ -1,0 +1,9 @@
+d1 
+  $ loopAt 1
+  $ s "break:8"
+
+d2
+  $ s "[808bd(8,16), 808lt(8,12)]" # n "0 2 3 8 3" # gain 1.4
+
+d2
+  $ silence

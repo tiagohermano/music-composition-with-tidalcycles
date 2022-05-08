@@ -1,0 +1,47 @@
+d1 $ stack [
+    mask "1 0 1 1 0 1 1 0" $ s "bd*8" # lpf "200 500 700",
+    mask "0 1 0 1 0 1 0 1" $ s "<cp realclaps !>*8" # n (run 3) # gain "0!2 1!5" # speed 0.8 # vowel "o e a",
+    mask "0 1 0 0 1 0 0 1" $ s "<popkick reverbkick>*8" # n (run 3),
+    degradeBy 0.3 $ s "<hh27 hh>(16,32)" # gain "0!2 1.2!5",
+    s "jungbass(3,8)" # gain 1.5 # pan sine,
+  ] # room 0.3
+
+---
+
+d1 
+  $ s "auto*8"
+  # n "0 [1 2] [6 2] 4 4 3 5" 
+  # legato 1
+  # fast "<2 1>"
+
+d2 
+  $ iter 2 
+  $ s "bsguitar(3,8)" 
+  # n "[0 1] 2 <2 3> 4" 
+  # legato 1 
+  # sustain 0.5
+
+d3
+  $ degradeBy 0.5
+  $ s "feelfx(3,8)" 
+  # n (run 3)
+  # legato 1
+
+d4
+  $ fast "<2 1>"
+  $ s "<hh27 hh>(8,16)" 
+  # n "0 1"
+
+---
+d1 
+  $ stack [
+    fast "1 2" $ s "hh27(8,16)" # n "0 [3 2] 3 2 1" # gain 1.2 # room 0.3,
+    s "<popkick reverbkick>(3,8,1)" # n (run 2) # gain 1.2,
+    s "jvbass(6,16)" # djf 0.8 # gain 1.8,
+  ]
+
+d2 
+  $ s "super808(8,16)" 
+  # n (arpg "[c'maj|f'min] <a'maj7 e'maj>")
+
+

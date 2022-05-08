@@ -1,0 +1,14 @@
+d1 
+  $ loopAt "2 1"
+  $ s "<break:7!3 break:1!1>"
+  # legato 1
+  # gain 1.7
+  -- # lpf "800!5 0!2"
+
+d2 
+  $ chunk "4 3" (rev)
+  $ s "superpwm(<4 3>,8)" 
+  # n "<[d'maj d5'min] [c'maj e'min]>"
+  # djf 0.2
+  # gain 1.5
+

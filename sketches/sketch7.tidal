@@ -1,0 +1,27 @@
+d1
+  $ jux rev
+  $ "[bd(5,8), hh(7,8)]"
+  # cps (140/120)
+
+d2 
+  $ slow 2 
+  $ n "[3 2] 4 [3 2] [4 2]" 
+  # s "gabba"
+  # coarse "<5 8>/2"
+
+d3
+  $ n "2 <4? 3>" 
+  # s "kurt"
+  # vowel "<a o>/2"
+  # gain 1.2
+
+d4 
+  $ jux rev 
+  $ fast 2
+  $ s "supertron" 
+  # n (scale "minor" $ arpg "c'min d'min <f3'min d'min>")
+  + up 2 
+  # gain 0.8
+  # pan sine
+
+

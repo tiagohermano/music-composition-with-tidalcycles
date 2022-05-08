@@ -1,0 +1,27 @@
+d1 
+  $ fast 2
+  $ loopAt 8
+  $ every 4 (rev)
+  $ off 0.125 (|+| 12)
+  $ n (arpg $ scale "indian" "[c'min d'maj] <a'min e'maj> f'min e'min") 
+  # s "superpiano"
+  # crush 5
+  # legato 2
+  # gain 0.8
+
+d1 $ silence
+
+d2
+  $ s "[house(3,7), hh27(2,8), popkick(2,7)]"
+
+d2 $ silence
+
+
+d3 
+  $ fast 2
+  $ stack [
+    s "house(3,8)",
+    s "hh27(2,8)",
+    every 4 (fast 2) $ s "oc(1,8)",
+    slow 2 $ s "hit*4" # n (irand 4) # gain 0.8
+  ]

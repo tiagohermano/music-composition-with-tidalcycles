@@ -1,0 +1,66 @@
+d1 
+  $ s "hh27*8" 
+  # speed "0.3 0.6" 
+  # delay 0.3
+
+d2 
+  $ sometimes (stut 2 0.7 (1/8))
+  $ n "0 <1*2 2*2 [3 5] [1 6]>"
+  # s "industrial" 
+  # speed "<0.25 0.4 0.5>"
+  # room 0.3
+  # pan (slow 2 sine)
+
+---
+
+d1 
+  $ sometimes (|* speed "-1")
+  $ s "rash*8" 
+  # n ((|+ 48) $ scale "dorian" $ "0 1 3 5")
+
+d1 
+  $ sometimes (|* speed "-1")
+  $ s "rash*8" 
+  # n ((|+ 48) $ scale "dorian" 
+               $ fmap floor 
+               $ range (-4) 8 
+               $ slow 4 sine)
+
+d1 
+  $ sometimes (|* speed "-1")
+  $ s "rash*8" 
+  # n 48 # up (scale "dorian" 
+               $ fmap floor 
+               $ range (-4) 8 
+               $ slow 4 sine)
+
+---
+
+d1
+  $ degradeBy 0.5
+  $ chop 32
+  $ s "rave" $ speed (range 0.1 1 $ slow 4 sine)
+
+d1
+  $ slow 2
+  $ degradeBy 0.2
+  $ scramble 64
+  $ striate 64
+  $ s "rave*4" # speed 0.5
+
+---
+
+d1
+  $ fast 4
+  $ scramble 2
+  $ s "bd sn cp"
+
+--- 
+d1 $ stack [
+  s "[bd(4,8), bass1(3,8)]" # gain 1.1,
+  ((0.5) ~>) $ s "[<cp, realclaps>(2,8), dr(3,8,1)]",
+  degradeBy 0.5 $ s "<hh hh27>(16,32)" # n "0 3",
+  slow 2 $ s "bsguitar(3,8)" # n "" # gain 1.4 # vowel "a e"
+]
+
+
