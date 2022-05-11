@@ -1,0 +1,28 @@
+d1 
+  $ loopAt 2
+  $ s "break:4"
+  # cps "1"
+  # room 0.2
+
+d2 
+  $ degradeBy 0.3
+  $ s "[hh27(<8 6>,16), sn(6,8), cp:1(3,8)]" 
+  # gain 1.1
+
+d3
+  $ s "feelfx(<4!4 6!1>,10)"
+  # vowel "a u"
+  # legato 2
+  # gain 0.8
+  # room 0.2
+
+d4 
+  $ s "<crow kurt>(<4 2>,4)" # n (irand 4)
+  # room 0.3
+  # gain "<0!4 1!1>"
+
+d5 
+  $ loopAt 2
+  $ s "lfloop:1"
+  # djf 0.5
+
