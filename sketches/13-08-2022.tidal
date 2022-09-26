@@ -1,0 +1,13 @@
+d1 
+  $ every 4 (hurry 2) $ every ("12 13 14") (# speed 4)
+  $ chop "<90 30 15> 1"
+  $ s "arpy*8 dsynth" # n "0 <5 3>" # legato 1
+
+d2 
+  $ fadeIn 4 
+  $ s "<jungbass:7(3,8)!3 jungbass:7(5,6)> hh*8" 
+  # gain "0.8 1.2"
+
+d3
+  $ fadeIn 8
+  $ s "kick <sd!3 [sd sd]>"

@@ -1,0 +1,20 @@
+do
+  setcps(120/60/4)
+  d1 $ s "clubkick(4,16)" # n 2
+  d2 $ s "1 0 1 0" $ s "hc" # n 2
+  d3 $ struct "~!3 1" $ s "cp"
+
+
+
+do 
+  setcps(120/60/4)
+  d1 $ s "clubkick ~!3" # n 2
+  d2 $ s "~!2 hc ~" # n 2
+  d3 $ struct "~!4 cp ~!3"
+
+
+setcps(120/60/4)
+
+d1 $ s "cp:4 [lo hi bd sd]/2"
+
+

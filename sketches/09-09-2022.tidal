@@ -1,0 +1,8 @@
+d1 $ s "<clubkick bd>(4,8)" # n "2"
+
+d2 $ off 0.25 (# crush 0.4) $ s "hh27(12,12)" # n "2"
+
+d3 $ n (arpg "c'maj d'min") # s "jungbass" # legato 1 # gain 0.8
+
+
+
