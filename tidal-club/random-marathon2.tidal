@@ -1,0 +1,82 @@
+-- cat
+d1 $ s (cat ["bd sn", "arpy clap"])
+
+-- randcat
+d1 $ s (randcat ["bd sn", "arpy clap", "cpu(5,8)"])
+
+d1 $ s (randcat ["bd sn", "arpy clap", "cpu(5,8)"])
+  # vowel (randcat ["a e i"])
+
+-- takes the rhythm from the vowel effect
+d1 
+  $ vowel (randcat ["a e i"]) 
+  # s (randcat ["bd sn", "arpy clap", "cpu(5,8)"])
+
+d1 $ vowel (randcat ["a e*2 i o", "e o u", "o*8"])
+  # s ("kick snare:4 clap:4")
+
+-- degrade
+d1 $ s "bd*8?"
+
+d1 $ degrade $ s "bd*8"
+
+--degradeBy (useful for transitioning into something completely different)
+d1 $ s "bd*8?0.6"
+
+d1 $ degradeBy 0.6 $ s "bd*8"
+
+-- sometimes
+d1 
+  $ sometimes (#squiz 4)
+  $ rev 
+  $ n "0 ~ 3 1 5 2 ~ 5" 
+  # s "cpu" 
+  # speed 1.5
+
+
+d1 
+  $ sometimes (fast 2)
+  $ rev 
+  $ n "0 ~ 3 1 5 2 ~ 5" 
+  # s "cpu" 
+  # speed 1.5
+
+d1 
+  -- $ every 2 (# squiz "<8 6>")
+  $ jux (off 0.50 $ rev)
+  $ degradeBy 0.3
+  $ hurry 2
+  $ n "0 ~ 3 1 5 2 ~ 5" 
+  # s "cpu" 
+  # speed 1.5
+
+--sometimesBy
+d1 
+  $ sometimesBy 0.6 (#squiz 4)
+  $ n "0 ~ 3 1 5 2 ~ 5" 
+  # s "cpu" 
+  # speed 1.5
+
+-- somecycles (random selecting the cycles that should be played)
+d1 
+  $ somecycles (hurry 2)
+  $ n "0 ~ 3 1 5 2 ~ 5" 
+  # s "cpu" 
+  # speed 1.5
+
+-- somecyclesBy
+d1 
+  $ somecyclesBy 0.9 (hurry 2)
+  $ n "0 ~ 3 1 5 2 ~ 5" 
+  # s "cpu" 
+  # speed 1.5
+
+-- randslice
+d1 $ randslice 4 $ s "break:8"
+
+d1 $ loopAt 1 $ fast 4 $ randslice 4 $ s "break:8"
+
+d1 $ slice 8 (segment 8 $ irand 8) $ s "break:8"
+
+d1 $ splice 8 (segment 8 $ irand 8) $ s "break:8"
+
