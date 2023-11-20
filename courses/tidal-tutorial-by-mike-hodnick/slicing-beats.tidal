@@ -1,0 +1,24 @@
+setcps (120/60/4)
+
+-- striate to fit a break beat inside a cycle
+
+d1 
+  $ every 4 (0.25 <~)
+  $ striate 64 (s "breaks125")
+
+
+d1
+  $ every 3 (rev)
+  $ striate 64 (s "breaks125")
+
+-- change the break speed
+d1 $ striate 64 $ s "breaks125" |+| speed "[1 1 1 1 0.4]/3" 
+
+
+d1 
+  $ every 2 (0.125 <~)
+  $ every 3 (0.25 <~)
+  $ every 4 (# up "[0 4 8 12]")
+  $ striate 32 ( s "break:4")
+  |+| speed "[1 1 1 1 0.8 1 1.2]/5"
+

@@ -1,0 +1,20 @@
+-- xfade or crossfade (default duration: 4sec)
+d1 $ s "bd*8? drum*8?"
+
+xfade 1 $ s "arpy(3,8) arpy(5,8)" # n (irand 10)
+
+
+--- fadeIn receives a second argument 'duration in secs'
+xfadeIn 1 8 $ s "arpy(3,8) arpy(5,8)" # n (irand 10)
+
+
+-- clutch
+d1 $ s "drum*16"
+
+clutch 1 $ s "arpy*16" # n (irand 10)
+
+-- clutchIn
+
+d1 $ s "drum*16" # n (irand 4)
+
+clutchIn 1 8 $ s "arpy*16" # n (irand 10)

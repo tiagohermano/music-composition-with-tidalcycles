@@ -1,0 +1,24 @@
+d1 
+  $ slow 8 
+  $ (striate' 64 0.1 $ s "bd*8 sn*4 hh*3 [hh sn]*4 bd*4")
+  # speed "[[1 0.75 0.5]/2, [5 4 3 6 4 6 4 3]/5]"
+  # delay "0.5"
+  # delaytime "0.3"
+  # delayfeedback "0.7"
+  # shape "0.3" 
+
+d1 
+  $ every 3 (iter 2)
+  $ jux (iter 4)
+  $ s "moog*16" 
+  # speed "[[1 0 0.5 0.75]/2, [5 2 4 1 4 8]/3]"
+  # legato 0.5
+  # room 0.3
+  # lpf "800"
+
+d2 $ s "k ~ sn ~ ~ k [sn k] ~" # gain 1.4
+
+d3 $ degradeBy 0.2 $ s "hh27*16" # gain "1.3"
+
+d4 $ s "<kurt crow>?"
+

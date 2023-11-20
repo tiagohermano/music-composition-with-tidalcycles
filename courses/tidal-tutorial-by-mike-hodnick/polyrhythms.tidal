@@ -1,0 +1,21 @@
+d1 $ s "[k*4, hc*3, cp(2,4,2)]"
+
+d1 $ s "[k [k*2, [cp:1*3, hc:1*3]] k k]"
+
+d1 $ s "[k [cp:1*2 hc*2]/2 k k]"
+
+d1 $ s "{k k k k, hc cp arpy}"
+
+d1 $ s "{ch cp:1 arpy}%16" -- wrap the 3 samples over 4 beats
+
+d2 $ s "k*4"
+
+--- 
+d1 $ s "{arpy arpy:1 arpy:2}%16"
+
+d2 $ s "[k*4, cp*2]"
+
+---
+
+d1 $ s "arpy*4" # speed "{1 1.5 2}%4"
+

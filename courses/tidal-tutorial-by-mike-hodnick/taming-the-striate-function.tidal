@@ -1,0 +1,41 @@
+-- 1. basic striate
+d1 
+  $ loopAt 8
+  -- $ slow 2
+  $ striate 1024 
+  $ s "bev"
+  -- # legato 3
+
+-- 2. striate'
+d1 $ striate' 16 0.001 $ s "bev" # up "[0 2 4 12 4]"
+
+d1 $ slow 4 $ striate' 16 0.01 $ s "bev"
+
+-- 3. striate with multiple samples
+d1 $ striate' 16 0.01 $ s "[bev, dl]"
+
+-- 4. fun with speed
+d1
+  $ striate' 16 0.01 
+  $ s "jungbass"
+  |+| speed "[1 2 0.5 0.8 3 2.5 1.5]"
+
+-- experimenting
+d1
+  $ off "q" (# pan (sine))
+  $ off "q" ((# gain (range 0.7 1.2 (slow 2 $ sine))) . rev)
+  $ s "dsynth*8"
+  # speed "[[1 2 0.5 0.8 3 2.5 1.5], [2 0.5 1 2]/2]"
+  # lpf "400"
+
+
+-- having fun with short samples
+d1 
+  $ slow 4
+  $ rev
+  $ striate' 64 0.3
+  $ trunc 0.5
+  $ s "k*8" 
+  -- # legato 1
+  -- # speed "[1 0.5 [2 2] 4 0.8 [3 1 1.5] 2 1.5]"
+

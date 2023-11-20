@@ -1,0 +1,24 @@
+let inverse 1 = 0
+    inverse 0 = 1
+
+do
+  let pat = "[1 1 0 1 0 0 1 0]"
+  d1 
+    $ fast 2 
+    $ gain pat
+    # s "k:4"
+  d2 
+    $ fast 2 
+    $ (0.25 <~)
+    $ gain (inverse <$> pat)
+    # s "cp"
+  d3 $ foldEvery [2,3] (0.25 ~>) $ gain (pat) # s "sn"
+  d4 $ foldEvery [3,4] (0.25 <~) $ gain (inverse <$> pat) # s "hc"
+
+---
+
+do
+  let pat = "[1 1 0/2 0 1/2 1 0 1]"
+  d1 $ fast 2 $ gain pat # s "k:5" # cut "1"
+  d2 $ gain (inverse <$> pat) # s "dbass:2"
+

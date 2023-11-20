@@ -1,0 +1,16 @@
+d1 $ s "sqr"
+
+d1 
+  $ every 2 (|-| crush "5 3 2 4")
+  $ s "sine*8" # crush "8 7 -5 10"
+
+-- stut
+d1 $ stut 4 0.25 0.25 $ s "sine"
+
+d1 
+  $ stut' 7 0.125 (|+| speed "2")
+  $ s "sine"
+
+d1 
+  $ stut' 15 (0.125/2) (|*| speed "1.5")
+  $ s "sine(3,8)"

@@ -1,0 +1,22 @@
+-- LEVEL 1 - Creating aliases
+let x = striate
+
+-- LEVEL 2 - Chaining functions
+let revNSpeed p = rev $ (|* speed 1.5) $ p
+
+-- LEVEL 3 - Writing custom functions
+let y speedAmount p = rev $ (|* speed 1.5) $ p
+
+
+d1 $ revNSpeed $ s "arpy*8" # n (run 8)
+
+let gtfo p = (# gain 0)
+
+let mute p = degradeBy 1 $ p
+
+d1 $ stack [
+  m $ s "bd*16?",
+  cascade $ s "~ cp"
+]
+
+d1 $ brak "flbass" # cps 0.8

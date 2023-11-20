@@ -1,0 +1,21 @@
+d1 $ ply 4 $ s "bd cp"
+
+d1 $ ply "8 4" $ "bd cp"
+
+d1 $ plyWith 8 (|* gain 0.95) $ s "bd arpy" # speed 1
+
+d1 $ plyWith 3 (ply 2) $ s "bd arpy" # speed 1
+
+d1 
+  $ plyWith 4 (# gain 0.8)
+  $ s "{made outdoor ulgab*2 invaders}%4"
+  # legato "1"
+  # n (run 10)
+  # gain 1
+
+d1 
+  $ plyWith "<2 4 5>" (# gain 0.8)
+  $ s "{made outdoor ulgab*2 invaders}%4"
+  # legato "1"
+  # n "<0 3 4 1 2>"
+  # gain 1
