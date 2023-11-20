@@ -1,6 +1,22 @@
+setcps(140/60/4)
+
 d1
   $ stack [
     slow 2 $ jux rev $ superimpose (off 0.125 (+| 12)) $ iter 4 $ s "kick(8,16)" # n "5",
     superimpose (fast 2) $ s "808bd(8,16)" # n (irand 3) # gain 1.2 # pan sine,
     iter 4 $ s "808oh(10,16)" # n (irand 2) # gain 0.9
   ]
+
+d2
+  $ fast 2
+  $ sometimesBy 0.4 (jux rev)
+  $ iter 2
+  $ s "dbass(4,8)" # n (irand 3)
+  # speed "[[3 4 2 5 5 6]/2, [0.5 0.4 0.3 0.4]/2]"
+  # vowel "<a e>"
+  # djf 0.4
+  # gain 1.4
+
+d3
+  $ 
+  
