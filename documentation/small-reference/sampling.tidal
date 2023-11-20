@@ -22,7 +22,7 @@ d1
   $ chop 16
   $ s "breaks125"
 
--- Let's try that rever in just one speaker:
+-- Let's try that revert in just one speaker:
 d1
   $ slow 2
   $ jux rev
